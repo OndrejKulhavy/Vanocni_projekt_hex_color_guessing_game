@@ -37,7 +37,7 @@ const IsItRightColor = (id) => {
 
 const CreateColorButton = () => {
   let div = document.createElement("div");
-  div.style.backgroundColor = "#" + color;
+  div.style.backgroundColor = color;
   div.className = "color_button";
   div.id = color;
   div.addEventListener("click", (event) => {
@@ -47,12 +47,11 @@ const CreateColorButton = () => {
 };
 
 const CreateRandomColorButton = () => {
-  let randomColor = Math.floor(Math.random() * 16777215)
+  let randomColor = "#" + Math.floor(Math.random() * 16777215)
     .toString(16)
-    .toUpperCase();
-
+  console.log(randomColor);
   let div = document.createElement("div");
-  div.style.backgroundColor = "#" + randomColor;
+  div.style.backgroundColor = randomColor;
   div.className = "color_button";
   div.id = randomColor;
   div.addEventListener("click", (event) => {
@@ -62,9 +61,9 @@ const CreateRandomColorButton = () => {
 };
 
 function Play() {
-  color = document.getElementById("hex_color");
-  let randomColor = Math.floor(Math.random() * 16777215)
-    .toString(16)
+  hexColor = document.getElementById("hex_color");
+  color = ("#" + Math.floor(Math.random() * 16777215)
+    .toString(16))
     .toUpperCase();
   let color_container = document.querySelector("#colors_container");
   color_container.innerHTML = "";
@@ -77,7 +76,8 @@ function Play() {
       color_container.appendChild(CreateRandomColorButton());
     }
   }
-  color.innerHTML = "#" + randomColor;
+  hexColor.innerHTML = color;
+  console.log(randomColor);
 }
 
 Play();
